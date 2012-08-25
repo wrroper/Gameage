@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
     <name>Pong</name>
-    <event-sheet>Event sheet 1</event-sheet>
+    <event-sheet>Pong</event-sheet>
     <size>
         <width>1280</width>
         <height>800</height>
@@ -46,7 +46,7 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
-                <instance type="Text">
+                <instance type="Score">
                     <properties>
                         <text>SCORE</text>
                         <initial-visibility>Visible</initial-visibility>
