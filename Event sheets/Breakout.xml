@@ -204,18 +204,18 @@
                         </action>
                         <action id="0" name="Spawn another object" type="BreakoutBar">
                             <param id="0" name="Object">PlayerShip</param>
-                            <param id="1" name="Layer">1</param>
+                            <param id="1" name="Layer">2</param>
                             <param id="2" name="Image point">0</param>
                         </action>
                         <action id="-9" name="Destroy" type="BreakoutBar" />
                         <action id="0" name="Spawn another object" type="RedBrick">
                             <param id="0" name="Object">Spaceship1</param>
-                            <param id="1" name="Layer">1</param>
+                            <param id="1" name="Layer">2</param>
                             <param id="2" name="Image point">0</param>
                         </action>
                         <action id="0" name="Spawn another object" type="YellowBrick">
                             <param id="0" name="Object">Spaceship2</param>
-                            <param id="1" name="Layer">1</param>
+                            <param id="1" name="Layer">2</param>
                             <param id="2" name="Image point">0</param>
                         </action>
                         <action id="-9" name="Destroy" type="Bricks" />
@@ -244,7 +244,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="Space Invaders Events" inactive="1" title="SpaceInvaders">
+        <event-group collapsed="1" description="Space Invaders Events" disabled="1" inactive="1" title="SpaceInvaders">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -284,7 +284,7 @@
                     <actions>
                         <action id="0" name="Spawn another object" type="PlayerShip">
                             <param id="0" name="Object">Laser</param>
-                            <param id="1" name="Layer">1</param>
+                            <param id="1" name="Layer">2</param>
                             <param id="2" name="Image point">1</param>
                         </action>
                         <action id="-8" name="Set angle" type="Laser">
@@ -427,7 +427,135 @@
                         <action id="-26" name="Restart layout" type="System" />
                     </actions>
                 </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">1</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" type="System">
+                            <param id="0" name="Object">Aliens</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="Aliens">
+                            <param id="0" name="Object">AlienLaser</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-8" name="Set angle" type="AlienLaser">
+                            <param id="0" name="Angle">90</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="PlayerShip">
+                            <param id="0" name="Object">AlienLaser</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Lives</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="AlienLaser" />
+                        <action id="-3" name="Set position" type="PlayerShip">
+                            <param id="0" name="X">640</param>
+                            <param id="1" name="Y">750</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-11" name="Subtract from" type="System">
+                            <param id="0" name="Variable">Lives</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="PlayerShip">
+                            <param id="0" name="Object">AlienLaser</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Lives</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="GameOver">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-29" name="Set layout effect enabled" type="System">
+                            <param id="0" name="Mode">1</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Aliens" />
+                        <action id="-9" name="Destroy" type="PlayerShip" />
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-26" name="Restart layout" type="System" />
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">250</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="LevelUp">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-29" name="Set layout effect enabled" type="System">
+                            <param id="0" name="Mode">1</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                        </action>
+                        <action id="0" name="Spawn another object" type="PlayerShip">
+                            <param id="0" name="Object">Galaxian</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="PlayerShip" />
+                        <action id="0" name="Spawn another object" type="Aliens">
+                            <param id="0" name="Object">GalAlien</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Aliens" />
+                        <action id="-15" name="Set visible" type="LevelUp">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-29" name="Set layout effect enabled" type="System">
+                            <param id="0" name="Mode">0</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;Galaxian&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;SpaceInvaders&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" disabled="1" title="Galaxian" />
     </events>
 </c2eventsheet>
