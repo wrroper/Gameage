@@ -37,7 +37,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-group description="All the events for Breakout" title="Breakout">
+        <event-group collapsed="1" description="All the events for Breakout" title="Breakout">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -180,6 +180,251 @@
                         <action id="-8" name="Set angle" type="BreakoutBall">
                             <param id="0" name="Angle">290</param>
                         </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">150</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="BreakoutBall" />
+                        <action id="-15" name="Set visible" type="LevelUp">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-29" name="Set layout effect enabled" type="System">
+                            <param id="0" name="Mode">1</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                        </action>
+                        <action id="0" name="Spawn another object" type="BreakoutBar">
+                            <param id="0" name="Object">PlayerShip</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="BreakoutBar" />
+                        <action id="0" name="Spawn another object" type="RedBrick">
+                            <param id="0" name="Object">Spaceship1</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="0" name="Spawn another object" type="YellowBrick">
+                            <param id="0" name="Object">Spaceship2</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Bricks" />
+                        <action id="-15" name="Set visible" type="LevelUp">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                        <action id="-29" name="Set layout effect enabled" type="System">
+                            <param id="0" name="Mode">0</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;SpaceInvaders&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;Breakout&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Switch to Space Invaders</comment>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group collapsed="1" description="Space Invaders Events" inactive="1" title="SpaceInvaders">
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="PlayerShip">
+                            <param id="0" name="Angle">0</param>
+                            <param id="1" name="Distance">4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="PlayerShip">
+                            <param id="0" name="Angle">180</param>
+                            <param id="1" name="Distance">4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">32 (Space)</param>
+                        </condition>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">1.5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="PlayerShip">
+                            <param id="0" name="Object">Laser</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-8" name="Set angle" type="Laser">
+                            <param id="0" name="Angle">270</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Compare X" type="PlayerShip">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">32</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" type="PlayerShip">
+                            <param id="0" name="X">32</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Compare X" type="PlayerShip">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">1248</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" type="PlayerShip">
+                            <param id="0" name="X">1248</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">1</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" type="Aliens">
+                            <param id="0" name="Instance variable">LeftRight</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" type="Aliens">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-1" name="Set X" type="Aliens">
+                            <param id="0" name="X">Aliens.X + 4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">1</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" type="Aliens">
+                            <param id="0" name="Instance variable">LeftRight</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" type="Aliens">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-1" name="Set X" type="Aliens">
+                            <param id="0" name="X">Aliens.X - 4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" type="Aliens">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">4</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" type="Aliens">
+                            <param id="0" name="Instance variable">LeftRight</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" type="Aliens">
+                            <param id="0" name="Y">Aliens.Y + 16</param>
+                        </action>
+                        <action id="-10" name="Set value" type="Aliens">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" type="Aliens">
+                            <param id="0" name="Instance variable">LeftRight</param>
+                            <param id="1" name="Value">Aliens.LeftRight = 0 ? 1 : 0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Aliens">
+                            <param id="0" name="Object">Laser</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Aliens" />
+                        <action id="-9" name="Destroy" type="Laser" />
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Aliens">
+                            <param id="0" name="Object">PlayerShip</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="GameOver">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-29" name="Set layout effect enabled" type="System">
+                            <param id="0" name="Mode">1</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Aliens" />
+                        <action id="-9" name="Destroy" type="PlayerShip" />
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-26" name="Restart layout" type="System" />
                     </actions>
                 </event-block>
             </sub-events>
