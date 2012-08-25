@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable name="RightScore" type="number">0</variable>
+        <variable name="LeftScore" type="number">0</variable>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">LeftScore</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">RightScore</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-29" name="Set layout effect enabled" type="System">
+                    <param id="0" name="Mode">0</param>
+                    <param id="1" name="Effect">&quot;RadialPixellate&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="2" name="Key is down" type="Keyboard">
+                    <param id="0" name="Key">38 (Up arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" type="LeftBar">
+                    <param id="0" name="Angle">270</param>
+                    <param id="1" name="Distance">2.5</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="2" name="Key is down" type="Keyboard">
+                    <param id="0" name="Key">40 (Down arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" type="LeftBar">
+                    <param id="0" name="Angle">90</param>
+                    <param id="1" name="Distance">2.5</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="Compare Y" type="Ball">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="Y co-ordinate">RightBar.Y - 10</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" type="RightBar">
+                    <param id="0" name="Angle">270</param>
+                    <param id="1" name="Distance">1.5</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="Compare Y" type="Ball">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">RightBar.Y - 10</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-23" name="Move at angle" type="RightBar">
+                    <param id="0" name="Angle">90</param>
+                    <param id="1" name="Distance">1.5</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="Compare Y" type="RightBar">
+                    <param id="0" name="Comparison">3</param>
+                    <param id="1" name="Y co-ordinate">48</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" type="RightBar">
+                    <param id="0" name="Y">48</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="Compare Y" type="RightBar">
+                    <param id="0" name="Comparison">5</param>
+                    <param id="1" name="Y co-ordinate">752</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Set Y" type="RightBar">
+                    <param id="0" name="Y">752</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-19" name="On destroyed" type="Ball" />
+                <condition id="-1" name="Compare X" type="Ball">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="X co-ordinate">600</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" type="System">
+                    <param id="0" name="Variable">LeftScore</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Set text" type="LeftScore">
+                    <param id="0" name="Text">LeftScore</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-19" name="On destroyed" type="Ball" />
+                <condition id="-1" name="Compare X" type="Ball">
+                    <param id="0" name="Comparison">2</param>
+                    <param id="1" name="X co-ordinate">600</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Add to" type="System">
+                    <param id="0" name="Variable">RightScore</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Set text" type="RightScore">
+                    <param id="0" name="Text">RightScore</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-19" name="On destroyed" type="Ball" />
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">LeftScore</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">RightScore</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-16" name="Wait" type="System">
+                    <param id="0" name="Seconds">2</param>
+                </action>
+                <action id="-3" name="Create object" type="System">
+                    <param id="0" name="Object to create">Ball</param>
+                    <param id="1" name="Layer">1</param>
+                    <param id="2" name="X">random(500,700)</param>
+                    <param id="3" name="Y">random(300,500)</param>
+                </action>
+                <action id="-8" name="Set angle" type="Ball">
+                    <param id="0" name="Angle">340</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">LeftScore</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">RightScore</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" type="LevelUp">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-16" name="Wait" type="System">
+                    <param id="0" name="Seconds">2</param>
+                </action>
+                <action id="-29" name="Set layout effect enabled" type="System">
+                    <param id="0" name="Mode">1</param>
+                    <param id="1" name="Effect">&quot;RadialPixellate&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
