@@ -1200,7 +1200,6 @@
                         <ShieldStrength>100</ShieldStrength>
                     </instance-variables>
                     <behavior-instances>
-                        <behavior-instance type="Solid" />
                         <behavior-instance type="BoundToLayout">
                             <properties>
                                 <bound-by>Edge</bound-by>
@@ -1453,6 +1452,26 @@
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
                         <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Replay">
+                    <properties>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <initial-frame>0</initial-frame>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>640</x>
+                        <y>500</y>
+                        <z>0</z>
+                        <width>128</width>
+                        <height>64</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>

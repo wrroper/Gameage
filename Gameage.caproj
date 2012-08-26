@@ -35,7 +35,7 @@
         <height>800</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
-    <first-layout>MainMenu</first-layout>
+    <first-layout>NewGame</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">No</prop>
@@ -485,9 +485,6 @@
                     <instance-variable comment="Laser Defense" name="ShieldStrength" type="number" />
                 </instance-variables>
                 <behaviors>
-                    <behavior-type name="Solid">
-                        <behavior id="solid" />
-                    </behavior-type>
                     <behavior-type name="BoundToLayout">
                         <behavior id="bound" />
                     </behavior-type>
@@ -662,6 +659,14 @@
         </object-type>
         <object-type name="Text4">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="Replay">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families>

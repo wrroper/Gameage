@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>NewGame</name>
     <events>
+        <variable name="GameOver" type="number">0</variable>
         <variable comment="Countdown to start" name="Countdown" type="number">10</variable>
         <event-block>
             <conditions>
@@ -90,15 +91,68 @@
                     <param id="0" name="Visibility">1</param>
                 </action>
                 <action id="-9" name="Destroy" type="Galaxian2" />
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">GameOver</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="-15" name="Set visible" type="Replay">
+                    <param id="0" name="Visibility">1</param>
+                </action>
             </actions>
         </event-block>
         <event-block>
             <conditions>
                 <condition id="-9" name="Is visible" type="Rules" />
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">GameOver</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
             </conditions>
             <actions>
                 <action id="0" name="Set text" type="Rules">
                     <param id="0" name="Text">&quot;Final Round!&quot;&amp;Newline&amp;Newline&amp;&quot;Controls: Arrow Keys Move, Mouse Aims, Hold Left Mouse to fire Lasers, Right Mouse to fire Breakout Ball.&quot;&amp;Newline&amp;&quot;Only one Breakout Ball may be fired at a time and you must collect it to fire it again!&quot;&amp;Newline&amp;NewLine&amp;&quot;How long can you survive? Good Luck!&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-9" name="Is visible" type="Rules" />
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">GameOver</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-15" name="Set visible" type="Rules">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="6" name="On object clicked" type="Mouse">
+                    <param id="0" name="Mouse button">0</param>
+                    <param id="1" name="Click type">0</param>
+                    <param id="2" name="Object clicked">Replay</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">Score</param>
+                    <param id="1" name="Value">400</param>
+                </action>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">Lives</param>
+                    <param id="1" name="Value">3</param>
+                </action>
+                <action id="-9" name="Set value" type="System">
+                    <param id="0" name="Variable">GameOver</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="-2" name="Go to layout" type="System">
+                    <param id="0" name="Layout">NewGame</param>
                 </action>
             </actions>
         </event-block>
