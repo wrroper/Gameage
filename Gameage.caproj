@@ -24,6 +24,7 @@
     </used-behaviors>
     <used-effects>
         <effect author="Scirra" id="blurvertical">Blur Vertical</effect>
+        <effect author="Scirra" id="pixellate">Pixellate</effect>
         <effect author="Brad Larson" id="radialpixellate">Radial pixellate</effect>
     </used-effects>
     <configurations>
@@ -34,7 +35,7 @@
         <height>800</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
-    <first-layout>NewGame</first-layout>
+    <first-layout>MainMenu</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">No</prop>
@@ -128,7 +129,7 @@
                 </animation-folder>
             </object-type>
         </object-folder>
-        <object-folder expanded="0" name="Breakout">
+        <object-folder expanded="1" name="Breakout">
             <object-type name="OrangeBrick">
                 <plugin id="Sprite" />
                 <behaviors>
@@ -642,6 +643,23 @@
         <object-type name="Mouse">
             <plugin id="Mouse" />
         </object-type>
+        <object-type name="Text">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Text2">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Text3">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="Sprite">
+            <plugin id="Sprite" />
+            <animation-folder expanded="1">
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="Bricks" plugin-id="Sprite">
@@ -680,11 +698,13 @@
         <layout>Pong.xml</layout>
         <layout>Breakout.xml</layout>
         <layout>NewGame.xml</layout>
+        <layout>MainMenu.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Pong.xml</event-sheet>
         <event-sheet>Breakout.xml</event-sheet>
         <event-sheet>NewGame.xml</event-sheet>
+        <event-sheet>MainMenu.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Keyboard" />

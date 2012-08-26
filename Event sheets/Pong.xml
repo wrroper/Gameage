@@ -211,5 +211,22 @@
                 </action>
             </actions>
         </event-block>
+        <event-block any="1">
+            <conditions>
+                <condition id="0" name="On collision with another object" type="Ball">
+                    <param id="0" name="Object">LeftBar</param>
+                </condition>
+                <condition id="0" name="On collision with another object" type="Ball">
+                    <param id="0" name="Object">RightBar</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Play" type="Audio">
+                    <param id="0" name="Audio file">PongBall</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

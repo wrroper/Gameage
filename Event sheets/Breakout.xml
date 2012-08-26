@@ -53,7 +53,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-group collapsed="1" description="All the events for Breakout" title="Breakout">
+        <event-group description="All the events for Breakout" title="Breakout">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -69,6 +69,20 @@
                         <action id="-9" name="Destroy" type="Bricks" />
                         <action id="0" name="Play" type="Audio">
                             <param id="0" name="Audio file">BrickBreak</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="BreakoutBall">
+                            <param id="0" name="Object">BreakoutBar</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">PongBall</param>
                             <param id="2" name="Loop">0</param>
                             <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
@@ -271,7 +285,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="Space Invaders Events" inactive="1" title="SpaceInvaders">
+        <event-group collapsed="1" description="Space Invaders Events" inactive="1" title="SpaceInvaders">
             <sub-events>
                 <event-block>
                     <conditions>
