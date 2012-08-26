@@ -38,7 +38,7 @@
             <actions>
                 <action id="-23" name="Move at angle" type="LeftBar">
                     <param id="0" name="Angle">270</param>
-                    <param id="1" name="Distance">2.5</param>
+                    <param id="1" name="Distance">180 * dt</param>
                 </action>
             </actions>
         </event-block>
@@ -51,7 +51,7 @@
             <actions>
                 <action id="-23" name="Move at angle" type="LeftBar">
                     <param id="0" name="Angle">90</param>
-                    <param id="1" name="Distance">2.5</param>
+                    <param id="1" name="Distance">180 * dt</param>
                 </action>
             </actions>
         </event-block>
@@ -65,7 +65,7 @@
             <actions>
                 <action id="-23" name="Move at angle" type="RightBar">
                     <param id="0" name="Angle">270</param>
-                    <param id="1" name="Distance">1.5</param>
+                    <param id="1" name="Distance">90 * dt</param>
                 </action>
             </actions>
         </event-block>
@@ -79,7 +79,7 @@
             <actions>
                 <action id="-23" name="Move at angle" type="RightBar">
                     <param id="0" name="Angle">90</param>
-                    <param id="1" name="Distance">1.5</param>
+                    <param id="1" name="Distance">90 * dt</param>
                 </action>
             </actions>
         </event-block>

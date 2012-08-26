@@ -97,7 +97,7 @@
                     <actions>
                         <action id="-23" name="Move at angle" type="BreakoutBar">
                             <param id="0" name="Angle">180</param>
-                            <param id="1" name="Distance">4</param>
+                            <param id="1" name="Distance">240 * dt</param>
                         </action>
                     </actions>
                 </event-block>
@@ -110,7 +110,7 @@
                     <actions>
                         <action id="-23" name="Move at angle" type="BreakoutBar">
                             <param id="0" name="Angle">0</param>
-                            <param id="1" name="Distance">4</param>
+                            <param id="1" name="Distance">240 * dt</param>
                         </action>
                     </actions>
                 </event-block>
@@ -285,7 +285,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="Space Invaders Events" inactive="1" title="SpaceInvaders">
+        <event-group description="Space Invaders Events" inactive="1" title="SpaceInvaders">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -296,7 +296,7 @@
                     <actions>
                         <action id="-23" name="Move at angle" type="PlayerShip">
                             <param id="0" name="Angle">0</param>
-                            <param id="1" name="Distance">4</param>
+                            <param id="1" name="Distance">240 * dt</param>
                         </action>
                     </actions>
                 </event-block>
@@ -309,7 +309,7 @@
                     <actions>
                         <action id="-23" name="Move at angle" type="PlayerShip">
                             <param id="0" name="Angle">180</param>
-                            <param id="1" name="Distance">4</param>
+                            <param id="1" name="Distance">240 * dt</param>
                         </action>
                     </actions>
                 </event-block>
@@ -630,7 +630,7 @@
                     </conditions>
                     <actions>
                         <action id="-2" name="Set Y" type="TiledBackground2">
-                            <param id="0" name="Y">TiledBackground2.Y + (4 * dt)</param>
+                            <param id="0" name="Y">TiledBackground2.Y + (30 * dt)</param>
                         </action>
                     </actions>
                 </event-block>
@@ -656,7 +656,7 @@
                     <actions>
                         <action id="-23" name="Move at angle" type="Galaxian">
                             <param id="0" name="Angle">180</param>
-                            <param id="1" name="Distance">4</param>
+                            <param id="1" name="Distance">240 * dt</param>
                         </action>
                     </actions>
                 </event-block>
@@ -669,7 +669,7 @@
                     <actions>
                         <action id="-23" name="Move at angle" type="Galaxian">
                             <param id="0" name="Angle">0</param>
-                            <param id="1" name="Distance">4</param>
+                            <param id="1" name="Distance">240 * dt</param>
                         </action>
                     </actions>
                 </event-block>

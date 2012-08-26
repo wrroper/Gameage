@@ -150,13 +150,39 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>640</x>
-                        <y>400</y>
+                        <y>600</y>
                         <z>0</z>
                         <width>128</width>
                         <height>64</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Text4">
+                    <properties>
+                        <text>Directions: Arrow keys to move, space to fire as applicable.</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Courier New,-24,700,0</font>
+                        <color>255,255,255</color>
+                        <horizontal-alignment>Center</horizontal-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>175</x>
+                        <y>393</y>
+                        <z>0</z>
+                        <width>930</width>
+                        <height>145</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
                         <angle>0</angle>
                         <opacity>1</opacity>
                     </world>

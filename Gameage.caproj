@@ -39,7 +39,7 @@
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">No</prop>
-        <prop name="Enable WebGL">On</prop>
+        <prop name="Enable WebGL">Off</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
         <prop name="Preview browser">(default)</prop>
@@ -659,6 +659,9 @@
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Text4">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families>
