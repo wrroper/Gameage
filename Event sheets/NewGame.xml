@@ -2,5 +2,632 @@
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>NewGame</name>
-    <events />
+    <events>
+        <variable comment="Countdown to start" name="Countdown" type="number">10</variable>
+        <event-block>
+            <conditions>
+                <condition id="-2" name="On start of layout" type="System" />
+                <condition id="-19" name="Pick all" type="System">
+                    <param id="0" name="Object">AllAliens</param>
+                </condition>
+                <condition id="-16" name="Is on layer" type="AllAliens">
+                    <param id="0" name="Layer">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Destroy" type="AllAliens" />
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-1" name="Every tick" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" type="PlayerShield">
+                    <param id="0" name="Text">Galaxian2.ShieldStrength</param>
+                </action>
+                <action id="0" name="Set text" type="PlayerScore">
+                    <param id="0" name="Text">Score</param>
+                </action>
+                <action id="0" name="Set text" type="PlayerLives">
+                    <param id="0" name="Text">Lives</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-6" name="Every X seconds" type="System">
+                    <param id="0" name="Interval (seconds)">1</param>
+                </condition>
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">Countdown</param>
+                    <param id="1" name="Comparison">4</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-11" name="Subtract from" type="System">
+                    <param id="0" name="Variable">Countdown</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-14" name="Compare variable" type="System">
+                    <param id="0" name="Variable">Countdown</param>
+                    <param id="1" name="Comparison">3</param>
+                    <param id="2" name="Value">0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-12" name="Set group active" type="System">
+                    <param id="0" name="Group name">&quot;Game&quot;</param>
+                    <param id="1" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block>
+            <conditions>
+                <condition id="-9" name="Is visible" type="Rules" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" type="Rules">
+                    <param id="0" name="Text">&quot;Final Round!&quot;&amp;Newline&amp;Newline&amp;&quot;Controls: Arrow Keys Move, Mouse Aims, Hold Left Mouse to fire Lasers, Right Mouse to fire Breakout Ball.&quot;&amp;Newline&amp;&quot;Only one Breakout Ball may be fired at a time and you must collect it to fire it again!&quot;&amp;Newline&amp;NewLine&amp;&quot;How long can you survive? Good Luck!&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="The game controls" inactive="1" title="Game">
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="-9" name="Is visible" type="Rules" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="Rules">
+                            <param id="0" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Every tick" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" type="Galaxian2">
+                            <param id="0" name="X">Mouse.X</param>
+                            <param id="1" name="Y">Mouse.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">0.5</param>
+                        </condition>
+                        <condition id="2" name="Mouse button is down" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="Galaxian2">
+                            <param id="0" name="Object">GalLaser</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Laser3</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="GalLaser">
+                            <param id="0" name="X">Mouse.X</param>
+                            <param id="1" name="Y">Mouse.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">1.0</param>
+                        </condition>
+                        <condition id="2" name="Mouse button is down" type="Mouse">
+                            <param id="0" name="Mouse button">2</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" type="Galaxian2">
+                            <param id="0" name="Instance variable">BallReturned</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" type="Galaxian2">
+                            <param id="0" name="Instance variable">BallReturned</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Spawn another object" type="Galaxian2">
+                            <param id="0" name="Object">BreakoutBall</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">2</param>
+                        </action>
+                        <action behavior="Bullet" id="0" name="Set speed" type="BreakoutBall">
+                            <param id="0" name="Speed">400</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="BreakoutBall">
+                            <param id="0" name="X">Mouse.X</param>
+                            <param id="1" name="Y">Mouse.Y</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">BrickBreak</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="BreakoutBall">
+                            <param id="0" name="Object">Galaxian2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="BreakoutBall" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">PongBall</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-13" name="Set boolean" type="Galaxian2">
+                            <param id="0" name="Instance variable">BallReturned</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">Random(1,4)</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" type="System">
+                            <param id="0" name="Object">AlienSpawn</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="AlienSpawn">
+                            <param id="0" name="Object">AllAliens</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-21" name="Rotate toward position" type="GalAlien2">
+                            <param id="0" name="Degrees">90</param>
+                            <param id="1" name="X">Galaxian2.X</param>
+                            <param id="2" name="Y">Galaxian2.Y</param>
+                        </action>
+                        <action id="-21" name="Rotate toward position" type="Spaceship3">
+                            <param id="0" name="Degrees">90</param>
+                            <param id="1" name="X">Galaxian2.X</param>
+                            <param id="2" name="Y">Galaxian2.Y</param>
+                        </action>
+                        <action id="-21" name="Rotate toward position" type="Spaceship4">
+                            <param id="0" name="Degrees">120</param>
+                            <param id="1" name="X">Galaxian2.X</param>
+                            <param id="2" name="Y">Galaxian2.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="GalAlien2">
+                            <param id="0" name="Object">GalLaser</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="GalAlien2" />
+                        <action id="-9" name="Destroy" type="GalLaser" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Death1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="GalAlien2">
+                            <param id="0" name="Object">BreakoutBall</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="GalAlien2" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Death1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Spaceship3">
+                            <param id="0" name="Object">GalLaser</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="Spaceship3" />
+                        <action id="-9" name="Destroy" type="GalLaser" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">GalAlienExplode</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Spaceship3">
+                            <param id="0" name="Object">BreakoutBall</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="Spaceship3" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">GalAlienExplode</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Spaceship4">
+                            <param id="0" name="Object">GalLaser</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="Spaceship4" />
+                        <action id="-9" name="Destroy" type="GalLaser" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">GalAlienExplode</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Spaceship4">
+                            <param id="0" name="Object">BreakoutBall</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="Spaceship4" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">GalAlienExplode</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">5</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Galaxian2">
+                            <param id="0" name="Object">AllAliens</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Explode1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">19</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" type="AllAliens" />
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">Lives</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Game&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-26" name="Restart layout" type="System" />
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">20</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Value">20</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="AllAliens" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Galaxian2">
+                            <param id="0" name="Object">GalAlienLaser</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">Explode1</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="GalAlienLaser" />
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">Lives</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Game&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-26" name="Restart layout" type="System" />
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">BrickBreak</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-12" name="Subtract from" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Value">5</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="GalAlienLaser" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Galaxian2">
+                            <param id="0" name="Object">AlienLaser</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">Explode1</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="AlienLaser" />
+                                <action id="-11" name="Subtract from" type="System">
+                                    <param id="0" name="Variable">Lives</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-12" name="Set group active" type="System">
+                                    <param id="0" name="Group name">&quot;Game&quot;</param>
+                                    <param id="1" name="State">0</param>
+                                </action>
+                                <action id="-26" name="Restart layout" type="System" />
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" type="Audio">
+                                    <param id="0" name="Audio file">BrickBreak</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-12" name="Subtract from" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Value">5</param>
+                                </action>
+                                <action id="-9" name="Destroy" type="AlienLaser" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">Random(3, 5)</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" type="System">
+                            <param id="0" name="Object">GalAlien2</param>
+                        </condition>
+                        <condition id="-3" name="Is on-screen" type="GalAlien2" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="GalAlien2">
+                            <param id="0" name="Object">GalAlienLaser</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="GalAlienLaser">
+                            <param id="0" name="X">Galaxian2.X</param>
+                            <param id="1" name="Y">Galaxian2.Y</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Attack1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">Random(3, 5)</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" type="System">
+                            <param id="0" name="Object">Spaceship3</param>
+                        </condition>
+                        <condition id="-3" name="Is on-screen" type="Spaceship3" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="Spaceship3">
+                            <param id="0" name="Object">AlienLaser</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="AlienLaser">
+                            <param id="0" name="X">Galaxian2.X</param>
+                            <param id="1" name="Y">Galaxian2.Y</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Laser1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">Random(3, 5)</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" type="System">
+                            <param id="0" name="Object">Spaceship4</param>
+                        </condition>
+                        <condition id="-3" name="Is on-screen" type="Spaceship4" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="Spaceship4">
+                            <param id="0" name="Object">AlienLaser</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="AlienLaser">
+                            <param id="0" name="X">Galaxian2.X</param>
+                            <param id="1" name="Y">Galaxian2.Y</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Laser1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">99</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Value">5</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Value">100</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" type="Galaxian2">
+                                    <param id="0" name="Instance variable">ShieldStrength</param>
+                                    <param id="1" name="Value">100</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
 </c2eventsheet>

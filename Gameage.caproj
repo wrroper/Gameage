@@ -2,19 +2,22 @@
 <c2project>
     <name>Gameage</name>
     <description>LD24 Evolution Entry</description>
-    <version>0.01</version>
+    <version>0.05</version>
     <author>Ryan Roper</author>
     <unique-id>1ct76sizqcgip</unique-id>
     <saved-with-version>10000</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Bullet" version="1">Bullet</behavior>
+        <behavior author="Scirra" id="EightDir" version="1">8 Direction</behavior>
+        <behavior author="Scirra" id="bound" version="1">Bound to layout</behavior>
         <behavior author="Scirra" id="custom" version="1">Custom Movement</behavior>
         <behavior author="Scirra" id="destroy" version="1">Destroy outside layout</behavior>
         <behavior author="Scirra" id="solid" version="1">Solid</behavior>
@@ -31,11 +34,11 @@
         <height>800</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
-    <first-layout>Breakout</first-layout>
+    <first-layout>NewGame</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">No</prop>
-        <prop name="Enable WebGL">Off</prop>
+        <prop name="Enable WebGL">On</prop>
         <prop name="Fullscreen in browser">Letterbox scale</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
         <prop name="Preview browser">(default)</prop>
@@ -342,8 +345,283 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="AlienLaser">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Bullet">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                    <behavior-type name="DestroyOutsideLayout">
+                        <behavior id="destroy" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <collision-poly>
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                                <point x="1" y="0" />
+                                <point x="1" y="1" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
-        <object-folder expanded="1" name="Galaxian" />
+        <object-folder expanded="1" name="Galaxian">
+            <object-type name="Galaxian">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="BallReturned" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Solid">
+                        <behavior id="solid" />
+                    </behavior-type>
+                    <behavior-type name="BoundToLayout">
+                        <behavior id="bound" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <image-point name="Gun" x="0.96875" y="0.5" />
+                            <image-point name="BallShooter" x="1.34375" y="0.484375" />
+                            <collision-poly>
+                                <point x="0.765625" y="0.234375" />
+                                <point x="0.953125" y="0.5" />
+                                <point x="0.765625" y="0.765625" />
+                                <point x="0.5" y="0.78125" />
+                                <point x="0.21875" y="0.78125" />
+                                <point x="0.15625" y="0.5" />
+                                <point x="0.203125" y="0.203125" />
+                                <point x="0.5" y="0.203125" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="GalLaser">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Bullet">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <collision-poly>
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                                <point x="1" y="0" />
+                                <point x="1" y="1" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="GalAlienLaser">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Bullet">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <collision-poly>
+                                <point x="0" y="1" />
+                                <point x="0" y="0" />
+                                <point x="1" y="0" />
+                                <point x="1" y="1" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="GalAlien">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="LeftRight" type="number" />
+                    <instance-variable name="Step" type="number" />
+                    <instance-variable name="StartX" type="number" />
+                    <instance-variable name="StartY" type="number" />
+                    <instance-variable name="Bombing" type="boolean" />
+                    <instance-variable name="Return" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Bullet">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <image-point name="Gun" x="0.0625" y="0.5" />
+                            <collision-poly>
+                                <point x="0.8125" y="0.1875" />
+                                <point x="0.875" y="0.5" />
+                                <point x="0.8125" y="0.8125" />
+                                <point x="0.5" y="0.6875" />
+                                <point x="0.15625" y="0.84375" />
+                                <point x="0.125" y="0.5" />
+                                <point x="0.15625" y="0.15625" />
+                                <point x="0.5" y="0.3125" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+        </object-folder>
+        <object-folder expanded="1" name="NewGame">
+            <object-type name="Galaxian2">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="BallReturned" type="boolean" />
+                    <instance-variable comment="Laser Defense" name="ShieldStrength" type="number" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Solid">
+                        <behavior id="solid" />
+                    </behavior-type>
+                    <behavior-type name="BoundToLayout">
+                        <behavior id="bound" />
+                    </behavior-type>
+                    <behavior-type name="8Direction">
+                        <behavior id="EightDir" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <image-point name="Gun" x="0.96875" y="0.5" />
+                            <image-point name="BallShooter" x="1.34375" y="0.484375" />
+                            <collision-poly>
+                                <point x="0.765625" y="0.234375" />
+                                <point x="0.953125" y="0.5" />
+                                <point x="0.765625" y="0.765625" />
+                                <point x="0.5" y="0.78125" />
+                                <point x="0.21875" y="0.78125" />
+                                <point x="0.15625" y="0.5" />
+                                <point x="0.203125" y="0.203125" />
+                                <point x="0.5" y="0.203125" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="AlienSpawn">
+                <plugin id="Sprite" />
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="GalAlien2">
+                <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="LeftRight" type="number" />
+                    <instance-variable name="Step" type="number" />
+                    <instance-variable name="StartX" type="number" />
+                    <instance-variable name="StartY" type="number" />
+                    <instance-variable name="Bombing" type="boolean" />
+                    <instance-variable name="Return" type="boolean" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Bullet">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                    <behavior-type name="Solid">
+                        <behavior id="solid" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <image-point name="Gun" x="0.0625" y="0.5" />
+                            <collision-poly>
+                                <point x="0.8125" y="0.1875" />
+                                <point x="0.875" y="0.5" />
+                                <point x="0.8125" y="0.8125" />
+                                <point x="0.5" y="0.6875" />
+                                <point x="0.15625" y="0.84375" />
+                                <point x="0.125" y="0.5" />
+                                <point x="0.15625" y="0.15625" />
+                                <point x="0.5" y="0.3125" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Spaceship3">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Bullet">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                    <behavior-type name="Solid">
+                        <behavior id="solid" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <image-point name="Gun" x="0" y="0.5" />
+                            <collision-poly>
+                                <point x="0.28125" y="0.71875" />
+                                <point x="0.0625" y="0.5" />
+                                <point x="0.28125" y="0.28125" />
+                                <point x="0.5" y="0.15625" />
+                                <point x="0.78125" y="0.21875" />
+                                <point x="0.5625" y="0.5" />
+                                <point x="0.78125" y="0.78125" />
+                                <point x="0.5" y="0.84375" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Spaceship4">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Solid">
+                        <behavior id="solid" />
+                    </behavior-type>
+                    <behavior-type name="Bullet">
+                        <behavior id="Bullet" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder expanded="1">
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                            <image-point name="Gun" x="0.0625" y="0.5" />
+                            <collision-poly>
+                                <point x="0.28125" y="0.71875" />
+                                <point x="0.25" y="0.5" />
+                                <point x="0.28125" y="0.28125" />
+                                <point x="0.5" y="0.1875" />
+                                <point x="0.625" y="0.375" />
+                                <point x="0.625" y="0.625" />
+                                <point x="0.5" y="0.8125" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="PlayerShield">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="Rules">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="ShieldsText">
+                <plugin id="Text" />
+            </object-type>
+        </object-folder>
         <object-type name="TiledBackground">
             <plugin id="TiledBg" />
             <texture />
@@ -354,128 +632,15 @@
         <object-type name="LevelUp">
             <plugin id="Text" />
         </object-type>
-        <object-type name="AlienLaser">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Bullet">
-                    <behavior id="Bullet" />
-                </behavior-type>
-                <behavior-type name="DestroyOutsideLayout">
-                    <behavior id="destroy" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                        <collision-poly>
-                            <point x="0" y="1" />
-                            <point x="0" y="0" />
-                            <point x="1" y="0" />
-                            <point x="1" y="1" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="Galaxian">
-            <plugin id="Sprite" />
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                        <image-point name="Gun" x="0.5" y="0.03125" />
-                        <collision-poly>
-                            <point x="0.234375" y="0.234375" />
-                            <point x="0.5" y="0.046875" />
-                            <point x="0.765625" y="0.234375" />
-                            <point x="0.78125" y="0.5" />
-                            <point x="0.78125" y="0.78125" />
-                            <point x="0.5" y="0.84375" />
-                            <point x="0.203125" y="0.796875" />
-                            <point x="0.203125" y="0.5" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="GalAlien">
-            <plugin id="Sprite" />
-            <instance-variables>
-                <instance-variable name="LeftRight" type="number" />
-                <instance-variable name="Step" type="number" />
-                <instance-variable name="StartX" type="number" />
-                <instance-variable name="StartY" type="number" />
-                <instance-variable name="Bombing" type="boolean" />
-                <instance-variable name="Return" type="boolean" />
-            </instance-variables>
-            <behaviors>
-                <behavior-type name="Bullet">
-                    <behavior id="Bullet" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                        <image-point name="Gun" x="0.0625" y="0.5" />
-                        <collision-poly>
-                            <point x="0.8125" y="0.1875" />
-                            <point x="0.875" y="0.5" />
-                            <point x="0.8125" y="0.8125" />
-                            <point x="0.5" y="0.6875" />
-                            <point x="0.15625" y="0.84375" />
-                            <point x="0.125" y="0.5" />
-                            <point x="0.15625" y="0.15625" />
-                            <point x="0.5" y="0.3125" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="GalLaser">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Bullet">
-                    <behavior id="Bullet" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                        <collision-poly>
-                            <point x="0" y="1" />
-                            <point x="0" y="0" />
-                            <point x="1" y="0" />
-                            <point x="1" y="1" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="GalAlienLaser">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Bullet">
-                    <behavior id="Bullet" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder expanded="1">
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
-                        <collision-poly>
-                            <point x="0" y="1" />
-                            <point x="0" y="0" />
-                            <point x="1" y="0" />
-                            <point x="1" y="1" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="TiledBackground2">
             <plugin id="TiledBg" />
             <texture />
         </object-type>
         <object-type name="Audio">
             <plugin id="Audio" />
+        </object-type>
+        <object-type name="Mouse">
+            <plugin id="Mouse" />
         </object-type>
     </object-folder>
     <families>
@@ -503,6 +668,13 @@
                 <member>GalAlien</member>
             </members>
         </family>
+        <family name="AllAliens" plugin-id="Sprite">
+            <members>
+                <member>GalAlien2</member>
+                <member>Spaceship3</member>
+                <member>Spaceship4</member>
+            </members>
+        </family>
     </families>
     <layout-folder expanded="1">
         <layout>Pong.xml</layout>
@@ -521,6 +693,7 @@
                 <timescale-audio>Off</timescale-audio>
             </properties>
         </global-instance>
+        <global-instance type="Mouse" />
     </global-instances>
     <sounds-folder expanded="0">
         <file name="Attack1.m4a" />
