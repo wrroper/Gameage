@@ -7,6 +7,7 @@
     <unique-id>1ct76sizqcgip</unique-id>
     <saved-with-version>10000</saved-with-version>
     <used-plugins>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
@@ -473,6 +474,9 @@
             <plugin id="TiledBg" />
             <texture />
         </object-type>
+        <object-type name="Audio">
+            <plugin id="Audio" />
+        </object-type>
     </object-folder>
     <families>
         <family name="Bricks" plugin-id="Sprite">
@@ -503,17 +507,50 @@
     <layout-folder expanded="1">
         <layout>Pong.xml</layout>
         <layout>Breakout.xml</layout>
-        <layout>Asteroids.xml</layout>
+        <layout>NewGame.xml</layout>
     </layout-folder>
     <event-folder expanded="1">
         <event-sheet>Pong.xml</event-sheet>
         <event-sheet>Breakout.xml</event-sheet>
-        <event-sheet>Asteroids.xml</event-sheet>
+        <event-sheet>NewGame.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="Keyboard" />
+        <global-instance type="Audio">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+            </properties>
+        </global-instance>
     </global-instances>
-    <sounds-folder expanded="1" />
+    <sounds-folder expanded="0">
+        <file name="Attack1.m4a" />
+        <file name="Attack1.ogg" />
+        <file name="Attack1.wav" />
+        <file name="BrickBreak.m4a" />
+        <file name="BrickBreak.ogg" />
+        <file name="BrickBreak.wav" />
+        <file name="Death1.m4a" />
+        <file name="Death1.ogg" />
+        <file name="Death1.wav" />
+        <file name="Explode1.m4a" />
+        <file name="Explode1.ogg" />
+        <file name="Explode1.wav" />
+        <file name="GalAlienExplode.m4a" />
+        <file name="GalAlienExplode.ogg" />
+        <file name="GalAlienExplode.wav" />
+        <file name="Laser1.m4a" />
+        <file name="Laser1.ogg" />
+        <file name="Laser1.wav" />
+        <file name="Laser2.m4a" />
+        <file name="Laser2.ogg" />
+        <file name="Laser2.wav" />
+        <file name="Laser3.m4a" />
+        <file name="Laser3.ogg" />
+        <file name="Laser3.wav" />
+        <file name="PongBall.m4a" />
+        <file name="PongBall.ogg" />
+        <file name="PongBall.wav" />
+    </sounds-folder>
     <music-folder expanded="1" />
     <files-folder expanded="1" />
 </c2project>

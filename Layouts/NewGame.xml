@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
-    <name>Asteroids</name>
-    <event-sheet>Asteroids</event-sheet>
+    <name>NewGame</name>
+    <event-sheet>NewGame</event-sheet>
     <size>
         <width>1280</width>
         <height>800</height>

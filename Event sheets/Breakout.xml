@@ -30,6 +30,14 @@
                     <param id="0" name="X">0</param>
                     <param id="1" name="Y">-256</param>
                 </action>
+                <action id="-12" name="Set group active" type="System">
+                    <param id="0" name="Group name">&quot;SpaceInvaders&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
+                <action id="-12" name="Set group active" type="System">
+                    <param id="0" name="Group name">&quot;Galaxian&quot;</param>
+                    <param id="1" name="State">0</param>
+                </action>
             </actions>
         </event-block>
         <event-block>
@@ -59,6 +67,11 @@
                             <param id="1" name="Value">10</param>
                         </action>
                         <action id="-9" name="Destroy" type="Bricks" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">BrickBreak</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -304,6 +317,11 @@
                         <action id="-8" name="Set angle" type="Laser">
                             <param id="0" name="Angle">270</param>
                         </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Laser2</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -409,6 +427,11 @@
                         </action>
                         <action id="-9" name="Destroy" type="Aliens" />
                         <action id="-9" name="Destroy" type="Laser" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">GalAlienExplode</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -454,6 +477,11 @@
                         <action id="-8" name="Set angle" type="AlienLaser">
                             <param id="0" name="Angle">90</param>
                         </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Laser1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -479,6 +507,11 @@
                         <action id="-11" name="Subtract from" type="System">
                             <param id="0" name="Variable">Lives</param>
                             <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">GalAlienExplode</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -510,6 +543,11 @@
                             <param id="0" name="Seconds">2</param>
                         </action>
                         <action id="-26" name="Restart layout" type="System" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">GalAlienExplode</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -577,6 +615,29 @@
             <sub-events>
                 <event-block>
                     <conditions>
+                        <condition id="-1" name="Every tick" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" type="TiledBackground2">
+                            <param id="0" name="Y">TiledBackground2.Y + (4 * dt)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-2" name="Compare Y" type="TiledBackground2">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" type="TiledBackground2">
+                            <param id="0" name="Y">-256</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
                         <condition id="2" name="Key is down" type="Keyboard">
                             <param id="0" name="Key">37 (Left arrow)</param>
                         </condition>
@@ -618,6 +679,11 @@
                         </action>
                         <action id="-8" name="Set angle" type="GalLaser">
                             <param id="0" name="Angle">270</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Laser3</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -723,6 +789,11 @@
                         </action>
                         <action id="-9" name="Destroy" type="GalAlien" />
                         <action id="-9" name="Destroy" type="GalLaser" />
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Death1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -800,6 +871,11 @@
                             <param id="0" name="X">Galaxian.X</param>
                             <param id="1" name="Y">Galaxian.Y</param>
                         </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Attack1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
                 <event-block>
@@ -808,53 +884,70 @@
                             <param id="0" name="Instance variable">Return</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="-22" name="Set angle toward position" type="GalAlien">
-                            <param id="0" name="X">GalAlien.StartX</param>
-                            <param id="1" name="Y">GalAlien.StartY</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block>
-                    <conditions>
-                        <condition id="-21" name="Is between values" type="System">
-                            <param id="0" name="Value">GalAlien.X</param>
-                            <param id="1" name="Lower bound">GalAlien.StartX - 1</param>
-                            <param id="2" name="Upper bound">GalAlien.StartX + 1</param>
-                        </condition>
-                        <condition id="-21" name="Is between values" type="System">
-                            <param id="0" name="Value">GalAlien.Y</param>
-                            <param id="1" name="Lower bound">GalAlien.StartY - 1</param>
-                            <param id="2" name="Upper bound">GalAlien.StartY + 1</param>
-                        </condition>
-                        <condition id="-8" name="Is boolean instance variable set" type="GalAlien">
-                            <param id="0" name="Instance variable">Return</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" type="GalAlien">
-                            <param id="0" name="Instance variable">StartX</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="-10" name="Set value" type="GalAlien">
-                            <param id="0" name="Instance variable">StartY</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action behavior="Bullet" id="0" name="Set speed" type="GalAlien">
-                            <param id="0" name="Speed">0</param>
-                        </action>
-                        <action id="-8" name="Set angle" type="GalAlien">
-                            <param id="0" name="Angle">270</param>
-                        </action>
-                        <action id="-13" name="Set boolean" type="GalAlien">
-                            <param id="0" name="Instance variable">Bombing</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                        <action id="-13" name="Set boolean" type="GalAlien">
-                            <param id="0" name="Instance variable">Return</param>
-                            <param id="1" name="Value">0</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block>
+                            <conditions>
+                                <condition id="-21" name="Is between values" type="System">
+                                    <param id="0" name="Value">GalAlien.X</param>
+                                    <param id="1" name="Lower bound">GalAlien.StartX - 1</param>
+                                    <param id="2" name="Upper bound">GalAlien.StartX + 1</param>
+                                </condition>
+                                <condition id="-21" name="Is between values" type="System">
+                                    <param id="0" name="Value">GalAlien.Y</param>
+                                    <param id="1" name="Lower bound">GalAlien.StartY - 1</param>
+                                    <param id="2" name="Upper bound">GalAlien.StartY + 1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" type="GalAlien">
+                                    <param id="0" name="Instance variable">StartX</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-10" name="Set value" type="GalAlien">
+                                    <param id="0" name="Instance variable">StartY</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-13" name="Set boolean" type="GalAlien">
+                                    <param id="0" name="Instance variable">Return</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action behavior="Bullet" id="0" name="Set speed" type="GalAlien">
+                                    <param id="0" name="Speed">0</param>
+                                </action>
+                                <action id="-16" name="Wait" type="System">
+                                    <param id="0" name="Seconds">0</param>
+                                </action>
+                                <action id="-8" name="Set angle" type="GalAlien">
+                                    <param id="0" name="Angle">270</param>
+                                </action>
+                                <action id="-13" name="Set boolean" type="GalAlien">
+                                    <param id="0" name="Instance variable">Bombing</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block>
+                            <conditions>
+                                <condition id="-8" name="Compare two values" type="System">
+                                    <param id="0" name="First value">abs(GalAlien.X - GalAlien.StartX)</param>
+                                    <param id="1" name="Comparison">5</param>
+                                    <param id="2" name="Second value">5</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" type="System">
+                                    <param id="0" name="First value">abs(GalAlien.Y - GalAlien.StartY)</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-22" name="Set angle toward position" type="GalAlien">
+                                    <param id="0" name="X">GalAlien.StartX</param>
+                                    <param id="1" name="Y">GalAlien.StartY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block>
                     <conditions>
@@ -874,6 +967,11 @@
                         <action id="-11" name="Subtract from" type="System">
                             <param id="0" name="Variable">Lives</param>
                             <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Death1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -895,6 +993,11 @@
                         <action id="-11" name="Subtract from" type="System">
                             <param id="0" name="Variable">Lives</param>
                             <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Play" type="Audio">
+                            <param id="0" name="Audio file">Death1</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -924,35 +1027,12 @@
                 <event-block>
                     <conditions>
                         <condition id="-8" name="Compare two values" type="System">
-                            <param id="0" name="First value">GalAlien.Count</param>
-                            <param id="1" name="Comparison">3</param>
-                            <param id="2" name="Second value">8</param>
+                            <param id="0" name="First value">Score</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Second value">400</param>
                         </condition>
                     </conditions>
                     <actions />
-                </event-block>
-                <event-block>
-                    <conditions>
-                        <condition id="-1" name="Every tick" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="-2" name="Set Y" type="TiledBackground2">
-                            <param id="0" name="Y">TiledBackground2.Y + (4 * dt)</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block>
-                    <conditions>
-                        <condition id="-2" name="Compare Y" type="TiledBackground2">
-                            <param id="0" name="Comparison">5</param>
-                            <param id="1" name="Y co-ordinate">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-2" name="Set Y" type="TiledBackground2">
-                            <param id="0" name="Y">-256</param>
-                        </action>
-                    </actions>
                 </event-block>
             </sub-events>
         </event-group>
