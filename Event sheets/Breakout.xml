@@ -22,6 +22,14 @@
                     <param id="0" name="Mode">0</param>
                     <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
                 </action>
+                <action id="-7" name="Set size" type="TiledBackground2">
+                    <param id="0" name="Width">WindowWidth</param>
+                    <param id="1" name="Height">WindowHeight+256</param>
+                </action>
+                <action id="-3" name="Set position" type="TiledBackground2">
+                    <param id="0" name="X">0</param>
+                    <param id="1" name="Y">-256</param>
+                </action>
             </actions>
         </event-block>
         <event-block>
@@ -37,7 +45,7 @@
                 </action>
             </actions>
         </event-block>
-        <event-group collapsed="1" description="All the events for Breakout" title="Breakout">
+        <event-group description="All the events for Breakout" title="Breakout">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -202,10 +210,12 @@
                             <param id="0" name="Mode">1</param>
                             <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
                         </action>
-                        <action id="0" name="Spawn another object" type="BreakoutBar">
-                            <param id="0" name="Object">PlayerShip</param>
-                            <param id="1" name="Layer">2</param>
-                            <param id="2" name="Image point">0</param>
+                        <action id="-3" name="Set position" type="PlayerShip">
+                            <param id="0" name="X">640</param>
+                            <param id="1" name="Y">750</param>
+                        </action>
+                        <action id="-26" name="Move to layer" type="PlayerShip">
+                            <param id="0" name="Layer">2</param>
                         </action>
                         <action id="-9" name="Destroy" type="BreakoutBar" />
                         <action id="0" name="Spawn another object" type="RedBrick">
@@ -213,7 +223,7 @@
                             <param id="1" name="Layer">2</param>
                             <param id="2" name="Image point">0</param>
                         </action>
-                        <action id="0" name="Spawn another object" type="YellowBrick">
+                        <action id="0" name="Spawn another object" type="GreenBrick">
                             <param id="0" name="Object">Spaceship2</param>
                             <param id="1" name="Layer">2</param>
                             <param id="2" name="Image point">0</param>
@@ -237,6 +247,10 @@
                             <param id="0" name="Group name">&quot;Breakout&quot;</param>
                             <param id="1" name="State">0</param>
                         </action>
+                        <action id="-12" name="Set group active" type="System">
+                            <param id="0" name="Group name">&quot;Galaxian&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <comment>Switch to Space Invaders</comment>
@@ -244,7 +258,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group collapsed="1" description="Space Invaders Events" disabled="1" inactive="1" title="SpaceInvaders">
+        <event-group description="Space Invaders Events" inactive="1" title="SpaceInvaders">
             <sub-events>
                 <event-block>
                     <conditions>
@@ -366,11 +380,6 @@
                             <param id="0" name="Instance variable">Step</param>
                             <param id="1" name="Comparison">5</param>
                             <param id="2" name="Value">4</param>
-                        </condition>
-                        <condition id="-7" name="Compare instance variable" type="Aliens">
-                            <param id="0" name="Instance variable">LeftRight</param>
-                            <param id="1" name="Comparison">0</param>
-                            <param id="2" name="Value">0</param>
                         </condition>
                     </conditions>
                     <actions>
@@ -522,16 +531,21 @@
                             <param id="0" name="Mode">1</param>
                             <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
                         </action>
-                        <action id="0" name="Spawn another object" type="PlayerShip">
-                            <param id="0" name="Object">Galaxian</param>
-                            <param id="1" name="Layer">2</param>
-                            <param id="2" name="Image point">0</param>
+                        <action id="-26" name="Move to layer" type="Galaxian">
+                            <param id="0" name="Layer">2</param>
+                        </action>
+                        <action id="-3" name="Set position" type="Galaxian">
+                            <param id="0" name="X">640</param>
+                            <param id="1" name="Y">750</param>
                         </action>
                         <action id="-9" name="Destroy" type="PlayerShip" />
                         <action id="0" name="Spawn another object" type="Aliens">
                             <param id="0" name="Object">GalAlien</param>
                             <param id="1" name="Layer">2</param>
                             <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="-8" name="Set angle" type="GalAlien">
+                            <param id="0" name="Angle">270</param>
                         </action>
                         <action id="-9" name="Destroy" type="Aliens" />
                         <action id="-15" name="Set visible" type="LevelUp">
@@ -541,9 +555,6 @@
                             <param id="0" name="Mode">0</param>
                             <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
                         </action>
-                        <action id="-16" name="Wait" type="System">
-                            <param id="0" name="Seconds">2</param>
-                        </action>
                         <action id="-12" name="Set group active" type="System">
                             <param id="0" name="Group name">&quot;Galaxian&quot;</param>
                             <param id="1" name="State">1</param>
@@ -552,10 +563,398 @@
                             <param id="0" name="Group name">&quot;SpaceInvaders&quot;</param>
                             <param id="1" name="State">0</param>
                         </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">2</param>
+                        </action>
+                        <action id="-26" name="Move to layer" type="TiledBackground2">
+                            <param id="0" name="Layer">1</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" disabled="1" title="Galaxian" />
+        <event-group description="" title="Galaxian">
+            <sub-events>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="Galaxian">
+                            <param id="0" name="Angle">180</param>
+                            <param id="1" name="Distance">4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-23" name="Move at angle" type="Galaxian">
+                            <param id="0" name="Angle">0</param>
+                            <param id="1" name="Distance">4</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">0.5</param>
+                        </condition>
+                        <condition id="2" name="Key is down" type="Keyboard">
+                            <param id="0" name="Key">32 (Space)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" type="Galaxian">
+                            <param id="0" name="Object">GalLaser</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-8" name="Set angle" type="GalLaser">
+                            <param id="0" name="Angle">270</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Compare X" type="Galaxian">
+                            <param id="0" name="Comparison">3</param>
+                            <param id="1" name="X co-ordinate">32</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" type="Galaxian">
+                            <param id="0" name="X">32</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Compare X" type="Galaxian">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="X co-ordinate">1248</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" type="Galaxian">
+                            <param id="0" name="X">1248</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Every tick" type="System" />
+                        <condition id="-7" name="Compare instance variable" type="GalAlien">
+                            <param id="0" name="Instance variable">LeftRight</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" type="GalAlien">
+                            <param id="0" name="Instance variable">Bombing</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" type="GalAlien">
+                            <param id="0" name="X">GalAlien.X + 2</param>
+                        </action>
+                        <action id="-11" name="Add to" type="GalAlien">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Every tick" type="System" />
+                        <condition id="-7" name="Compare instance variable" type="GalAlien">
+                            <param id="0" name="Instance variable">LeftRight</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" type="GalAlien">
+                            <param id="0" name="Instance variable">Bombing</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" type="GalAlien">
+                            <param id="0" name="X">GalAlien.X - 2</param>
+                        </action>
+                        <action id="-11" name="Add to" type="GalAlien">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" type="GalAlien">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" type="GalAlien">
+                            <param id="0" name="Instance variable">Step</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" type="GalAlien">
+                            <param id="0" name="Instance variable">LeftRight</param>
+                            <param id="1" name="Value">GalAlien.LeftRight = 0 ? 1 : 0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="GalAlien">
+                            <param id="0" name="Object">GalLaser</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" type="System">
+                            <param id="0" name="Variable">Score</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="GalAlien" />
+                        <action id="-9" name="Destroy" type="GalLaser" />
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" type="GalAlien">
+                            <param id="0" name="Instance variable">Bombing</param>
+                        </condition>
+                        <condition id="-4" name="Is outside layout" type="GalAlien" />
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" type="GalAlien">
+                            <param id="0" name="Instance variable">Return</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-1" name="Set X" type="GalAlien">
+                            <param id="0" name="X">640</param>
+                        </action>
+                        <action id="-2" name="Set Y" type="GalAlien">
+                            <param id="0" name="Y">-50</param>
+                        </action>
+                        <action behavior="Bullet" id="0" name="Set speed" type="GalAlien">
+                            <param id="0" name="Speed">250</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="GalAlien">
+                            <param id="0" name="X">GalAlien.StartX</param>
+                            <param id="1" name="Y">GalAlien.StartY</param>
+                        </action>
+                        <action id="-13" name="Set boolean" type="GalAlien">
+                            <param id="0" name="Instance variable">Return</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" type="System">
+                            <param id="0" name="Interval (seconds)">Random(2,6)</param>
+                        </condition>
+                        <condition id="-16" name="Pick random instance" type="System">
+                            <param id="0" name="Object">GalAlien</param>
+                        </condition>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" type="GalAlien">
+                            <param id="0" name="Instance variable">Bombing</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" type="GalAlien">
+                            <param id="0" name="Instance variable">StartX</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" type="GalAlien">
+                            <param id="0" name="Instance variable">StartX</param>
+                            <param id="1" name="Value">GalAlien.X</param>
+                        </action>
+                        <action id="-10" name="Set value" type="GalAlien">
+                            <param id="0" name="Instance variable">StartY</param>
+                            <param id="1" name="Value">GalAlien.Y</param>
+                        </action>
+                        <action id="0" name="Spawn another object" type="GalAlien">
+                            <param id="0" name="Object">GalAlienLaser</param>
+                            <param id="1" name="Layer">2</param>
+                            <param id="2" name="Image point">1</param>
+                        </action>
+                        <action id="-8" name="Set angle" type="GalAlienLaser">
+                            <param id="0" name="Angle">90</param>
+                        </action>
+                        <action behavior="Bullet" id="0" name="Set speed" type="GalAlien">
+                            <param id="0" name="Speed">250</param>
+                        </action>
+                        <action id="-13" name="Set boolean" type="GalAlien">
+                            <param id="0" name="Instance variable">Bombing</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-22" name="Set angle toward position" type="GalAlien">
+                            <param id="0" name="X">Galaxian.X</param>
+                            <param id="1" name="Y">Galaxian.Y</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" type="GalAlien">
+                            <param id="0" name="Instance variable">Return</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-22" name="Set angle toward position" type="GalAlien">
+                            <param id="0" name="X">GalAlien.StartX</param>
+                            <param id="1" name="Y">GalAlien.StartY</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-21" name="Is between values" type="System">
+                            <param id="0" name="Value">GalAlien.X</param>
+                            <param id="1" name="Lower bound">GalAlien.StartX - 1</param>
+                            <param id="2" name="Upper bound">GalAlien.StartX + 1</param>
+                        </condition>
+                        <condition id="-21" name="Is between values" type="System">
+                            <param id="0" name="Value">GalAlien.Y</param>
+                            <param id="1" name="Lower bound">GalAlien.StartY - 1</param>
+                            <param id="2" name="Upper bound">GalAlien.StartY + 1</param>
+                        </condition>
+                        <condition id="-8" name="Is boolean instance variable set" type="GalAlien">
+                            <param id="0" name="Instance variable">Return</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" type="GalAlien">
+                            <param id="0" name="Instance variable">StartX</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-10" name="Set value" type="GalAlien">
+                            <param id="0" name="Instance variable">StartY</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action behavior="Bullet" id="0" name="Set speed" type="GalAlien">
+                            <param id="0" name="Speed">0</param>
+                        </action>
+                        <action id="-8" name="Set angle" type="GalAlien">
+                            <param id="0" name="Angle">270</param>
+                        </action>
+                        <action id="-13" name="Set boolean" type="GalAlien">
+                            <param id="0" name="Instance variable">Bombing</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-13" name="Set boolean" type="GalAlien">
+                            <param id="0" name="Instance variable">Return</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Galaxian">
+                            <param id="0" name="Object">GalAlienLaser</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="GalAlienLaser" />
+                        <action id="-3" name="Set position" type="Galaxian">
+                            <param id="0" name="X">640</param>
+                            <param id="1" name="Y">750</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-11" name="Subtract from" type="System">
+                            <param id="0" name="Variable">Lives</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="0" name="On collision with another object" type="Galaxian">
+                            <param id="0" name="Object">GalAlien</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" type="GalAlien" />
+                        <action id="-3" name="Set position" type="Galaxian">
+                            <param id="0" name="X">640</param>
+                            <param id="1" name="Y">750</param>
+                        </action>
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-11" name="Subtract from" type="System">
+                            <param id="0" name="Variable">Lives</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-14" name="Compare variable" type="System">
+                            <param id="0" name="Variable">Lives</param>
+                            <param id="1" name="Comparison">2</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" type="GameOver">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" type="Galaxian" />
+                        <action id="-16" name="Wait" type="System">
+                            <param id="0" name="Seconds">3</param>
+                        </action>
+                        <action id="-29" name="Set layout effect enabled" type="System">
+                            <param id="0" name="Mode">1</param>
+                            <param id="1" name="Effect">&quot;BlurVertical&quot;</param>
+                        </action>
+                        <action id="-26" name="Restart layout" type="System" />
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-8" name="Compare two values" type="System">
+                            <param id="0" name="First value">GalAlien.Count</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Second value">8</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-1" name="Every tick" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" type="TiledBackground2">
+                            <param id="0" name="Y">TiledBackground2.Y + (4 * dt)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block>
+                    <conditions>
+                        <condition id="-2" name="Compare Y" type="TiledBackground2">
+                            <param id="0" name="Comparison">5</param>
+                            <param id="1" name="Y co-ordinate">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" type="TiledBackground2">
+                            <param id="0" name="Y">-256</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>
